@@ -38,6 +38,5 @@ app.listen(3000, function () {
 })
 
 app.get('/needkey', function (req, res) {
-    console.log("hit")
     res.send(obj);
 })

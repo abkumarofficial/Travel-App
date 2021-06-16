@@ -169,3 +169,4 @@ const getKeyData = async () => {
 }
 
 export { gettingWeatherData };
+export { getKeyData };
