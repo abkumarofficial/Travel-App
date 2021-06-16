@@ -157,7 +157,7 @@ const makeDataforUI = () => {
 
 // Getting API keys from the server
 const getKeyData = async () => {
-    const gotKey = await fetch('http://172.16.160.128:3000/needkey');
+    const gotKey = await fetch('http://localhost:3000/needkey');
     try {
         const key = await gotKey.text();
         return key;
