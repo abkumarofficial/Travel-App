@@ -8,30 +8,45 @@ let longitude = '';
 let temperature;
 let description;
 let pictureURL = '';
+let enteredPlace = '';
+let tripDuration;
+let startDay;
+let startYear;
+let monthName = '';
+let dataAdded = false;
 
 // Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = `${d.getMonth() + 1}.${d.getDate()}.${d.getFullYear()}`;
+// let d = new Date();
+// let newDate = `${d.getMonth() + 1}.${d.getDate()}.${d.getFullYear()}`;
 
 const gettingWeatherData = async (event) => {
     event.preventDefault()
-
+    if (dataAdded) {
+        const element = document.getElementById('addedElement');
+        element.remove();
+        dataAdded = false;
+    }
     // check what text was put into the form field
     let place = document.getElementById('place').value;
+    enteredPlace = place;
     place = encodeURI(place);
     // departure Date
     let departure = new Date(document.getElementById('startDate').value);
-    var startMonth = departure.getMonth() + 1; // months start counting from zero!
-    var startDay   = departure.getDate();
-    var startYear  = departure.getFullYear();
+    const startMonth = departure.getMonth() + 1; // months start counting from zero!
+    const mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    monthName = mL[startMonth - 1];
+    startDay   = departure.getDate();
+    startYear  = departure.getFullYear();
     // Return Date
     let returnDate = new Date(document.getElementById('endDate').value);
     var endMonth = departure.getMonth() + 1; // months start counting from zero!
     var endDay   = departure.getDate();  
     var endYear  = departure.getFullYear();
+
     // Finding Difference b/w two dates
     const diffTime = Math.abs(returnDate - departure);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    tripDuration = diffDays;
     // Getting the data to show to the user
     if(place.length > 0 && !isNaN(diffDays)) {
         // const textURI = '&of=json&txt=' + encodeURI(formText)
@@ -115,6 +130,31 @@ const gettingWeatherData = async (event) => {
         alert("Invalid Data Entered");
         return;
     }
+    makeDataforUI()
+}
+
+const makeDataforUI = () => {
+    const data = {
+        "enteredPlace": `Place Name : ${enteredPlace}`,
+        "temperature" : `Temerature will be ${temperature} Celcius`,
+        "description" : `Weather Condition: ${description}`,
+        "startDate": `Departure Date is ${startDay} ${monthName} ${startYear}`,
+        "duration": `Trip Duration is ${tripDuration} days`,
+    };
+    let newDiv = document.createElement("div");
+    // console.log('data created', data);
+    for (const property in data) {
+        const childDiv = document.createElement("div");
+        console.log(`${property}: ${data[property]}`);
+        const newContent = document.createTextNode(`${data[property]}`);
+        childDiv.appendChild(newContent);
+        newDiv.appendChild(childDiv);
+        newDiv.id = "addedElement";
+        dataAdded = true;
+      }
+      console.log(newDiv);
+      const oneElement = document.getElementById('one');
+      oneElement.appendChild(newDiv)
 }
 
 // Getting API keys from the server
