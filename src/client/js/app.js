@@ -145,14 +145,12 @@ const makeDataforUI = () => {
     // console.log('data created', data);
     for (const property in data) {
         const childDiv = document.createElement("div");
-        console.log(`${property}: ${data[property]}`);
         const newContent = document.createTextNode(`${data[property]}`);
         childDiv.appendChild(newContent);
         newDiv.appendChild(childDiv);
         newDiv.id = "addedElement";
         dataAdded = true;
       }
-      console.log(newDiv);
       const oneElement = document.getElementById('one');
       oneElement.appendChild(newDiv)
 }
