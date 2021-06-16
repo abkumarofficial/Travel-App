@@ -2,7 +2,6 @@ const baseURL = "https://api.weatherbit.io/v2.0/forecast/daily?"
 
 const getWeatherCondition = async (geoNameData,lattitude, longitude, apiKey) => {
     const url = `${baseURL}lat=${lattitude}&lon=${longitude}&key=${apiKey}`;
-    console.log('URL')
     const response = await fetch(url);
     try {
         const data = await response.json()
