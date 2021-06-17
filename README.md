@@ -16,7 +16,7 @@ npm install
 Set up webpack config files for development and production environments.  Download files from this repo and navigate to the project folder. Afterwards, to start the server run these commands in command line:
 
 ```bash
-npm run build-dev
+npm run build-dev or
 npm run build-prod
 npm run start
 ```
