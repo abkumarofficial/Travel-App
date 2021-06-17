@@ -13,9 +13,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "babel": "^6.23.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "node-sass": "^4.14.1",
     "path": "^0.12.7"
   },
   "devDependencies": {
@@ -27,7 +29,6 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^27.0.4",
     "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
