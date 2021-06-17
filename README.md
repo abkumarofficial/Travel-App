@@ -21,8 +21,6 @@ npm run build-prod
 npm run start
 ```
 
-Navigate to http://localhost:8080/ in your browser.
-
 
 ## Usage
 To use the app, enter place name, departure date and return date, and hit submit.
